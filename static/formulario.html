@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!-- Declaración de documento HTML5 -->
+<html lang="es">
+<!-- Elemento raíz en idioma español -->
+<head>
+    <!-- Encabezado del documento -->
+    <!-- Codificación UTF-8 para caracteres especiales -->
+    <meta charset="UTF-8">
+    <!-- Configuración responsiva para dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la página -->
+    <title>Gestión de Equipos</title>
+    
+    <!-- Bootstrap 5.3.0 para estilos y componentes -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.4.0 para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos CSS personalizados -->
+    <link rel="stylesheet" href="/css/formulario.css">
+</head>
+
+<body class="bg-light">
+    <!-- bg-light = fondo gris claro -->
+    
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-primary sticky-top">
+        <!-- navbar-expand-lg = expandir en pantallas grandes -->
+        <!-- navbar-dark = tema oscuro -->
+        <!-- bg-gradient-primary = gradiente de fondo -->
+        <!-- sticky-top = queda fija al hacer scroll -->
+        
+        <div class="container-fluid">
+            <!-- container-fluid = ancho 100% -->
+            
+            <!-- Logo/Marca de la aplicación -->
+            <a class="navbar-brand fw-bold" href="#">
+                <!-- fw-bold = font-weight bold -->
+                <!-- Icono de laptop + texto -->
+                <i class="fas fa-laptop me-2"></i>Gestión de Equipos
+                <!-- me-2 = margin-end 2 -->
+            </a>
+            
+            <!-- Botón hamburguesa para dispositivos móviles -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <!-- data-bs-toggle="collapse" = activar colapso con Bootstrap -->
+                <!-- data-bs-target="#navbarNav" = apuntar al elemento con id navbarNav -->
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Menú de navegación -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- collapse = oculto en móvil, visible en desktop -->
+                
+                <!-- Lista de items del navbar (alineados a la derecha) -->
+                <ul class="navbar-nav ms-auto">
+                    <!-- ms-auto = margin-start auto (alinea a la derecha) -->
+                    
+                    <!-- Item: mostrar usuario actual -->
+                    <li class="nav-item">
+                        <!-- Mostrar email del usuario logeado -->
+                        <span class="nav-link">
+                            <!-- Icono de perfil de usuario -->
+                            <i class="fas fa-user-circle me-2"></i>
+                            <!-- Elemento donde se mostrará el usuario (desde JavaScript) -->
+                            <span id="usuarioActual">Usuario</span>
+                        </span>
+                    </li>
+                    
+                    <!-- Item: botón cerrar sesión -->
+                    <li class="nav-item">
+                        <!-- Botón para cerrar sesión -->
+                            <!-- Icono cerrar sesión + texto -->
+                            <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
+                            <!-- me-2 = margin-end 2 -->
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Fin de la barra de navegación -->
+
+    <!-- CONTENEDOR PRINCIPAL CON PADDING -->
+    <div class="container-fluid py-5">
+        <!-- py-5 = padding vertical -->
+        
+        <!-- SECCIÓN HEADER/TÍTULO -->
+        <div class="row mb-5">
+            <!-- mb-5 = margin-bottom 5 -->
+            <div class="col-12">
+                <!-- col-12 = ancho completo (12 de 12 columnas) -->
+                
+                <!-- Sección de encabezado con gradiente -->
+                <div class="header-section">
+                    <!-- Título principal con gradiente de color -->
+                    <h1 class="display-4 fw-bold text-gradient mb-2">
+                        <!-- display-4 = tamaño muy grande -->
+                        <!-- fw-bold = font-weight bold -->
+                        <!-- text-gradient = color gradiente (desde CSS) -->
+                        <!-- Icono + Texto -->
+                        <i class="fas fa-laptop me-3"></i>Gestión de Equipos
+                    </h1>
+                    
+                    <!-- Subtítulo descriptivo -->
+                    <p class="text-muted lead">Sistema de administración de equipos informáticos</p>
+                    <!-- text-muted = color gris -->
+                    <!-- lead = tamaño de fuente más grande -->
+                </div>
+            </div>
+        </div>
+
+        <!-- FILA PRINCIPAL: FORMULARIO + TABLA -->
+        <div class="row">
+            <!-- Columna izquierda: FORMULARIO DE REGISTRO -->
+            <div class="col-lg-4 mb-4">
+                <!-- col-lg-4 = 4 columnas en pantallas grandes = 33% -->
+                <!-- mb-4 = margin-bottom -->
+                
+                <!-- Tarjeta del formulario -->
+                <div class="card form-card shadow-lg">
+                    <div class="card-header bg-gradient-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Registrar Nuevo Equipo</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="formEquipo">
+                            <!-- ID oculto para edición -->
+                            <input type="hidden" id="equipoId">
+
+                            <div class="mb-3">
+                                <label for="codigo" class="form-label">
+                                    <i class="fas fa-barcode"></i> Código *
+                                </label>
+                                <input type="text" class="form-control input-focus" id="codigo" placeholder="Ej: PC-001" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="marca" class="form-label">
+                                    <i class="fas fa-tag"></i> Marca
+                                </label>
+                                <input type="text" class="form-control input-focus" id="marca" placeholder="Ej: Dell, HP, Lenovo">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="so" class="form-label">
+                                        <i class="fas fa-windows"></i> Sistema Operativo
+                                    </label>
+                                    <input type="text" class="form-control input-focus" id="so" placeholder="Ej: Windows 10">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="ram" class="form-label">
+                                        <i class="fas fa-memory"></i> RAM
+                                    </label>
+                                    <input type="text" class="form-control input-focus" id="ram" placeholder="Ej: 8GB">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tipo" class="form-label">
+                                    <i class="fas fa-cube"></i> Tipo de Equipo
+                                </label>
+                                <select class="form-control input-focus" id="tipo">
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="Laptop">Laptop</option>
+                                    <option value="Desktop">Desktop</option>
+                                    <option value="Servidor">Servidor</option>
+                                    <option value="Impresora">Impresora</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="modelo" class="form-label">
+                                    <i class="fas fa-cog"></i> Modelo
+                                </label>
+                                <input type="text" class="form-control input-focus" id="modelo" placeholder="Ej: XPS 13">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="almacenamiento" class="form-label">
+                                    <i class="fas fa-database"></i> Almacenamiento
+                                </label>
+                                <input type="text" class="form-control input-focus" id="almacenamiento" placeholder="Ej: 512GB SSD">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="estado" class="form-label">
+                                        <i class="fas fa-check-circle"></i> Estado
+                                    </label>
+                                    <select class="form-control input-focus" id="estado">
+                                        <option value="">-- Seleccionar --</option>
+                                        <option value="Activo">Activo</option>
+                                        <option value="Inactivo">Inactivo</option>
+                                        <option value="Mantenimiento">Mantenimiento</option>
+                                        <option value="No disponible">No disponible</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="fechaMant" class="form-label">
+                                        <i class="fas fa-calendar"></i> Fecha Mantenimiento
+                                    </label>
+                                    <input type="date" class="form-control input-focus" id="fechaMant">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fechaReg" class="form-label">
+                                    <i class="fas fa-calendar-check"></i> Fecha Registro
+                                </label>
+                                <input type="date" class="form-control input-focus" id="fechaReg">
+                            </div>
+
+                            <!-- Botones CRUD -->
+                            <div class="d-grid gap-2 mb-3">
+                                <button type="submit" id="btnGuardar" class="btn btn-gradient-primary btn-lg btn-animated">
+                                    <i class="fas fa-save me-2"></i>Guardar
+                                </button>
+                            </div>
+
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <button type="button" id="btnActualizar" class="btn btn-warning w-100" style="display: none;">
+                                        <i class="fas fa-edit me-2"></i>Actualizar
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" id="btnLimpiar" class="btn btn-secondary w-100" onclick="limpiarFormulario()">
+                                        <i class="fas fa-eraser me-2"></i>Limpiar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabla de Equipos -->
+            <div class="col-lg-8">
+                <div class="card table-card shadow-lg">
+                    <div class="card-header bg-gradient-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-list me-2"></i>Equipos Registrados</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0" id="tablaEquipos">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th><i class="fas fa-key"></i> ID</th>
+                                        <th><i class="fas fa-barcode"></i> Código</th>
+                                        <th><i class="fas fa-tag"></i> Marca</th>
+                                        <th><i class="fas fa-cube"></i> Tipo</th>
+                                        <th><i class="fas fa-check-circle"></i> Estado</th>
+                                        <th><i class="fas fa-calendar"></i> F. Mant.</th>
+                                        <th><i class="fas fa-calendar-check"></i> F. Registro</th>
+                                        <th><i class="fas fa-cogs"></i> Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <div class="table-footer p-3 text-muted text-center">
+                            <small><i class="fas fa-info-circle"></i> Total de equipos: <span id="totalEquipos">0</span></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast de notificaciones -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="toastNotificacion" class="toast" role="alert">
+            <div class="toast-header bg-success text-white">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong class="me-auto">Éxito</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                <span id="toastMensaje">Operación completada</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/formulario.js"></script>
+</body>
+</html>

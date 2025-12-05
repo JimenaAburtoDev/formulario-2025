@@ -1,0 +1,343 @@
+/* ==================== VARIABLES CSS ====================*/
+/* Definir variables reutilizables en todo el CSS */
+:root {
+    --primary-color: #2563eb;        /* Azul principal */
+    --primary-dark: #1e40af;         /* Azul oscuro */
+    --primary-light: #3b82f6;        /* Azul claro */
+    --secondary-color: #8b5cf6;      /* Púrpura secundario */
+    --success-color: #10b981;        /* Verde para éxito */
+    --danger-color: #ef4444;         /* Rojo para error */
+    --light-bg: #f9fafb;             /* Fondo gris claro */
+    --border-color: #e5e7eb;         /* Color de bordes */
+    --text-primary: #111827;         /* Texto principal (oscuro) */
+    --text-secondary: #6b7280;       /* Texto secundario (gris) */
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);  /* Sombra estándar */
+}
+
+/* ==================== ESTILOS DEL BODY (LOGIN) ====================*/
+.login-body {
+    /* Fuente del sistema para mejor compatibilidad */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Gradiente de fondo (de azul a púrpura) */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Color del texto */
+    color: var(--text-primary);
+    /* Altura mínima de toda la pantalla */
+    min-height: 100vh;
+    /* Flexbox para centrado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Para que el elemento ::before sea relativo a esto */
+    position: relative;
+    /* Evitar scroll horizontal */
+    overflow: hidden;
+}
+
+/* Efecto de animación en el fondo (formas sutiles animadas) */
+.login-body::before {
+    /* Pseudo-elemento para crear efecto visual */
+    content: '';
+    /* Posición absoluta para cubrir el fondo */
+    position: absolute;
+    /* Tamaño mayor que el elemento padre para crear efecto infinito */
+    width: 150%;
+    height: 150%;
+    /* Gradiente radial con colores semi-transparentes */
+    background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+    /* Animación continua */
+    animation: moveGradient 15s ease infinite;
+    /* Poner detrás de todo */
+    z-index: -1;
+}
+
+/* Animación que mueve el gradiente de fondo */
+@keyframes moveGradient {
+    0%, 100% {
+        /* Posición inicial/final */
+        transform: translate(0, 0);
+    }
+    50% {
+        /* Posición a mitad de la animación (desplazamiento) */
+        transform: translate(50px, 50px);
+    }
+}
+
+/* ==================== CONTENEDOR LOGIN ====================*/
+.login-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    padding: 3rem;
+    width: 100%;
+    max-width: 450px;
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== HEADER LOGIN ====================*/
+.login-header {
+    margin-bottom: 2rem;
+}
+
+.logo-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    animation: scaleIn 0.6s ease-out 0.2s both;
+}
+
+.logo-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.login-header h1 {
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    animation: fadeInDown 0.6s ease-out 0.1s both;
+}
+
+.login-header p {
+    animation: fadeInDown 0.6s ease-out 0.2s both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== FORMULARIO ====================*/
+.login-form {
+    animation: fadeIn 0.6s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+}
+
+.input-login {
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: var(--light-bg);
+}
+
+.input-login:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+    transform: translateY(-2px);
+}
+
+.input-group-lg .input-login {
+    padding: 0.8rem 1rem;
+}
+
+.input-group-lg .btn {
+    border: 2px solid var(--border-color);
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.input-group-lg .btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* ==================== CHECKBOX ====================*/
+.form-check-input {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+.form-check-label {
+    cursor: pointer;
+    user-select: none;
+    color: var(--text-secondary);
+}
+
+/* ==================== BOTÓN LOGIN ====================*/
+.btn-login {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.3s ease;
+    z-index: 1;
+}
+
+.btn-login:hover::before {
+    left: 100%;
+}
+
+.btn-login:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    color: white;
+}
+
+.btn-login:active {
+    transform: translateY(-1px);
+}
+
+.btn-login:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* ==================== DIVIDER ====================*/
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 2rem 0;
+}
+
+/* ==================== FOOTER ====================*/
+.login-footer {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ==================== RESPONSIVE ====================*/
+@media (max-width: 576px) {
+    .login-container {
+        padding: 2rem;
+        max-width: 100%;
+        margin: 1rem;
+        border-radius: 15px;
+    }
+
+    .logo-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .logo-icon i {
+        font-size: 2rem;
+    }
+
+    .login-header h1 {
+        font-size: 2rem;
+    }
+
+    .login-header p {
+        font-size: 0.9rem;
+    }
+
+    .mb-4 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .input-login {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+}
+
+/* ==================== ANIMACIONES ADICIONALES ====================*/
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.btn-login:disabled {
+    animation: pulse 1s infinite;
+}
+
+/* ==================== TOAST ====================*/
+.toast {
+    animation: slideInRight 0.4s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

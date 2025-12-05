@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!-- Declaración de documento HTML5 -->
+<html lang="es">
+<!-- Elemento raíz en idioma español -->
+<head>
+    <!-- Encabezado del documento (metadatos, estilos, scripts) -->
+    
+    <!-- Definir codificación de caracteres como UTF-8 (para caracteres especiales) -->
+    <meta charset="UTF-8">
+    <!-- Configurar viewport para responsividad en dispositivos móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la página (aparece en la pestaña del navegador) -->
+    <title>Login - Gestión de Equipos</title>
+    
+    <!-- Enlazar Bootstrap 5.3.0 (framework CSS para estilos rápidos y responsivos) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Enlazar Font Awesome 6.4.0 (librería de iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Enlazar estilos CSS personalizados para la página de login -->
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<!-- Fin del encabezado -->
+
+<body class="login-body">
+    <!-- Clase login-body aplica estilos especiales al fondo de la página de login -->
+    
+    <!-- Contenedor principal: centrado horizontal y verticalmente en toda la pantalla -->
+    <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+        <!-- min-vh-100 = altura mínima 100% del viewport -->
+        <!-- d-flex = display flex -->
+        <!-- justify-content-center = centrado horizontal -->
+        <!-- align-items-center = centrado vertical -->
+        
+        <!-- Contenedor del formulario de login -->
+        <div class="login-container">
+            <!-- Sección de header/logo -->
+            <div class="login-header text-center mb-4">
+                <!-- text-center = centrar texto -->
+                <!-- mb-4 = margin-bottom -->
+                
+                <!-- Icono de laptop dentro de un contenedor circular -->
+                <div class="logo-icon mb-3">
+                    <!-- mb-3 = margin-bottom 3 -->
+                    <!-- Icono de laptop de Font Awesome -->
+                    <i class="fas fa-laptop"></i>
+                </div>
+                
+                <!-- Título principal de la aplicación -->
+                <h1 class="display-5 fw-bold">Gestión de Equipos</h1>
+                <!-- display-5 = tamaño de fuente grande -->
+                <!-- fw-bold = font-weight bold (negrilla) -->
+                
+                <!-- Subtítulo descriptivo -->
+                <p class="text-muted">Sistema de administración de equipos informáticos</p>
+                <!-- text-muted = color gris oscuro -->
+            </div>
+
+            <!-- Formulario de autenticación -->
+            <form id="loginForm" class="login-form">
+                <!-- id="loginForm" = identificador para acceder desde JavaScript -->
+                <!-- class="login-form" = estilos CSS personalizados -->
+                
+                <!-- Campo de usuario -->
+                <div class="mb-4">
+                    <!-- mb-4 = margin-bottom (espaciado inferior) -->
+                    <!-- Etiqueta del campo con icono -->
+                    <label for="usuario" class="form-label">
+                        <!-- for="usuario" vincula esta etiqueta al input con id="usuario" -->
+                        <!-- Icono de usuario de Font Awesome -->
+                        <i class="fas fa-user me-2"></i>Usuario
+                        <!-- me-2 = margin-end (derecha) -->
+                    </label>
+                    <!-- Input de tipo texto para el usuario/email -->
+                    <input 
+                        type="text" 
+                        class="form-control form-control-lg input-login" 
+                        id="usuario" 
+                        placeholder="Ingresa tu usuario"
+                        required
+                        <!-- required = campo obligatorio -->
+                    >
+                </div>
+
+                <!-- Campo de contraseña -->
+                <div class="mb-4">
+                    <!-- mb-4 = margin-bottom -->
+                    <!-- Etiqueta del campo con icono -->
+                    <label for="contrasena" class="form-label">
+                        <!-- Icono de candado de Font Awesome -->
+                        <i class="fas fa-lock me-2"></i>Contraseña
+                    </label>
+                    <!-- Input group: agrupa el input con botón para mostrar/ocultar contraseña -->
+                    <div class="input-group input-group-lg">
+                        <!-- input-group-lg = tamaño grande -->
+                        <!-- Input de tipo password (oculta caracteres) -->
+                        <input 
+                            type="password" 
+                            class="form-control input-login" 
+                            id="contrasena" 
+                            placeholder="Ingresa tu contraseña"
+                            required
+                        >
+                        <!-- Botón para mostrar/ocultar contraseña -->
+                        <button
+                            type="button" 
+                            class="btn btn-outline-secondary" 
+                            id="togglePassword"
+                            onclick="togglePasswordVisibility()"
+                            <!-- type="button" = no envía formulario -->
+                            <!-- onclick = función JavaScript que se ejecuta al hacer clic -->
+                        >
+                            <!-- Icono de ojo (mostrar contraseña) -->
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Checkbox "Recuérdame" para guardar usuario -->
+                <div class="mb-4">
+                    <!-- mb-4 = margin-bottom -->
+                    <!-- Contenedor de checkbox de Bootstrap -->
+                    <div class="form-check">
+                        <!-- Input de tipo checkbox -->
+                        <input 
+                            type="checkbox" 
+                            class="form-check-input" 
+                            id="recuerdame"
+                            <!-- id="recuerdame" = identificador para acceder desde JavaScript -->
+                        >
+                        <!-- Etiqueta del checkbox -->
+                        <label class="form-check-label" for="recuerdame">
+                            <!-- for="recuerdame" vincula al checkbox -->
+                            Recuérdame en este dispositivo
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Botón de envío del formulario -->
+                <button type="submit" class="btn btn-login btn-lg w-100 mb-3">
+                    <!-- type="submit" = envía el formulario -->
+                    <!-- w-100 = width 100% (ancho completo) -->
+                    <!-- mb-3 = margin-bottom -->
+                    <!-- Icono de entrada + texto -->
+                    <i class="fas fa-sign-in-alt me-2"></i>Ingresar
+                </button>
+
+                <!-- Separador horizontal -->
+                <hr class="my-4">
+                <!-- my-4 = margin vertical -->
+
+                <!-- Sección de credenciales de prueba -->
+                <div class="text-center text-muted small">
+                    <!-- text-center = centrado -->
+                    <!-- text-muted = color gris -->
+                    <!-- small = texto pequeño -->
+                    
+                    <!-- Texto informativo -->
+                    <p class="mb-0">Credenciales de prueba:</p>
+                    <!-- mb-0 = sin margin-bottom -->
+                    
+                    <!-- Usuario de prueba -->
+                    <p class="mb-0"><strong>Usuario:</strong> admin</p>
+                    
+                    <!-- Contraseña de prueba -->
+                    <p><strong>Contraseña:</strong> 123456</p>
+                </div>
+            </form>
+            <!-- Fin del formulario -->
+
+            <!-- Información adicional/Footer del login -->
+            <div class="login-footer text-center mt-5 pt-4 border-top">
+                <!-- mt-5 = margin-top -->
+                <!-- pt-4 = padding-top -->
+                <!-- border-top = borde superior -->
+                
+                <!-- Ícono de candado + texto -->
+                <small class="text-muted d-block mb-2">
+                    <!-- d-block = display block -->
+                    <!-- mb-2 = margin-bottom -->
+                    <i class="fas fa-shield-alt me-1"></i>Conexión segura
+                </small>
+                
+                <!-- Copyright -->
+                <small class="text-muted">
+                    © 2025 Sistema de Gestión de Equipos. Todos los derechos reservados.
+                </small>
+            </div>
+        </div>
+        <!-- Fin del contenedor login-container -->
+    </div>
+    <!-- Fin del contenedor principal -->
+
+    <!-- Toast/Notificación para mensajes de error -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <!-- position-fixed = posición fija en pantalla -->
+        <!-- bottom-0 end-0 = esquina inferior derecha -->
+        <!-- p-3 = padding -->
+        <!-- z-index: 11 = aparecer encima de otros elementos -->
+        
+        <!-- Elemento toast de Bootstrap -->
+        <div id="toastNotificacion" class="toast" role="alert">
+            <!-- id="toastNotificacion" = identificador para acceder desde JavaScript -->
+            <!-- role="alert" = accesibilidad -->
+            
+            <!-- Header del toast con color de error (rojo) -->
+            <div class="toast-header bg-danger text-white">
+                <!-- bg-danger = fondo rojo -->
+                <!-- text-white = texto blanco -->
+                
+                <!-- Icono de error -->
+                <i class="fas fa-exclamation-circle me-2"></i>
+                <!-- me-2 = margin-end (derecha) -->
+                
+                <!-- Título del toast -->
+                <strong class="me-auto">Error</strong>
+                <!-- me-auto = margin-end auto (empuja el botón al final) -->
+                
+                <!-- Botón cerrar del toast -->
+                <button 
+                    type="button" 
+                    class="btn-close btn-close-white" 
+                    data-bs-dismiss="toast"
+                    <!-- data-bs-dismiss="toast" = cierra el toast al hacer clic (Bootstrap) -->
+                ></button>
+            </div>
+            
+            <!-- Cuerpo del toast (mensaje) -->
+            <div class="toast-body">
+                <!-- Contenedor para el texto del mensaje -->
+                <span id="toastMensaje">Error al iniciar sesión</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de Bootstrap 5.3.0 (funcionalidades interactivas) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script de login con validaciones y manejo de formulario -->
+    <script src="/js/login.js"></script>
+</body>
+<!-- Fin del body -->
+</html>
+<!-- Fin del documento HTML -->
