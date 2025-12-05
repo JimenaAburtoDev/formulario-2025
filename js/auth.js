@@ -52,7 +52,7 @@ function iniciarSesion(event) {
 
     // Validar que los campos no estén vacíos
     if (!usuario || !contrasena) {
-        alert('Por favor, ingresa tu usuario y contraseña.');
+        mostrarMensajeError('Por favor, ingresa tu usuario y contraseña.');
         return;
     }
 
@@ -64,7 +64,16 @@ function iniciarSesion(event) {
         // Redirigir a la página principal
         window.location.href = '/';
     } else {
-        alert('Usuario o contraseña incorrectos.');
+        mostrarMensajeError('Usuario o contraseña incorrectos.');
+    }
+}
+
+// ==================== FUNCIÓN PARA MOSTRAR MENSAJE DE ERROR ====================
+function mostrarMensajeError(mensaje) {
+    const errorDiv = document.getElementById('errorMensaje');
+    if (errorDiv) {
+        errorDiv.textContent = mensaje;
+        errorDiv.style.display = 'block';
     }
 }
 
