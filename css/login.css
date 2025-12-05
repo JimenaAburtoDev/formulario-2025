@@ -143,6 +143,10 @@
 /* ==================== FORMULARIO ====================*/
 .login-form {
     animation: fadeIn 0.6s ease-out 0.3s both;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
 }
 
 @keyframes fadeIn {
@@ -162,9 +166,9 @@
 }
 
 .input-login {
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
-    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
     font-size: 1rem;
     transition: all 0.3s ease;
     background-color: var(--light-bg);
@@ -172,9 +176,8 @@
 
 .input-login:focus {
     border-color: var(--primary-color);
-    background-color: white;
-    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
-    transform: translateY(-2px);
+    box-shadow: 0 0 5px var(--primary-light);
+    outline: none;
 }
 
 .input-group-lg .input-login {
@@ -261,6 +264,7 @@
 .btn-login:disabled {
     opacity: 0.7;
     cursor: not-allowed;
+    animation: pulse 1s infinite;
 }
 
 /* ==================== DIVIDER ====================*/
@@ -320,10 +324,6 @@ hr {
     50% {
         opacity: 0.5;
     }
-}
-
-.btn-login:disabled {
-    animation: pulse 1s infinite;
 }
 
 /* ==================== TOAST ====================*/

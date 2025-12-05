@@ -40,3 +40,37 @@ function cerrarSesion() {
         window.location.href = '/login';
     }
 }
+
+// ==================== FUNCIÓN INICIAR SESIÓN ====================
+// Esta función se ejecuta cuando el usuario envía el formulario de login
+function iniciarSesion(event) {
+    event.preventDefault(); // Evitar que la página se recargue
+
+    // Obtener los valores de usuario y contraseña
+    const usuario = document.getElementById('usuario').value;
+    const contrasena = document.getElementById('contrasena').value;
+
+    // Validar que los campos no estén vacíos
+    if (!usuario || !contrasena) {
+        alert('Por favor, ingresa tu usuario y contraseña.');
+        return;
+    }
+
+    // Simular autenticación (puedes reemplazar esto con una llamada a tu API)
+    if (usuario === 'admin' && contrasena === '1234') {
+        // Guardar el usuario en sessionStorage
+        sessionStorage.setItem('usuarioLogeado', usuario);
+
+        // Redirigir a la página principal
+        window.location.href = '/';
+    } else {
+        alert('Usuario o contraseña incorrectos.');
+    }
+}
+
+// ==================== EVENTO PARA EL FORMULARIO ====================
+// Asociar la función iniciarSesion al evento submit del formulario
+const loginForm = document.getElementById('loginForm');
+if (loginForm) {
+    loginForm.addEventListener('submit', iniciarSesion);
+}
