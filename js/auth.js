@@ -68,6 +68,17 @@ function iniciarSesion(event) {
     }
 }
 
+// ==================== FUNCIÓN PARA MOSTRAR/OCULTAR CONTRASEÑA ====================
+const togglePassword = document.getElementById('togglePassword');
+if (togglePassword) {
+    togglePassword.addEventListener('click', function () {
+        const passwordField = document.getElementById('contrasena');
+        const type = passwordField.type === 'password' ? 'text' : 'password';
+        passwordField.type = type;
+        this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+    });
+}
+
 // ==================== EVENTO PARA EL FORMULARIO ====================
 // Asociar la función iniciarSesion al evento submit del formulario
 const loginForm = document.getElementById('loginForm');

@@ -177,6 +177,18 @@
     outline: none;
 }
 
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group .btn {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid var(--border-color);
+    background-color: var(--light-bg);
+    color: var(--text-secondary);
+}
+
 .input-group-lg .input-login {
     padding: 0.8rem 1rem;
 }
