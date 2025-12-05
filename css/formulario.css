@@ -502,3 +502,32 @@ html {
 button, a, input, select, textarea {
     transition: all 0.3s ease;
 }
+
+/* ==================== HEADER ====================*/
+.header {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    color: white;
+    margin: 0;
+}
+
+.header p {
+    font-size: 1rem;
+    color: white;
+    margin: 0;
+}
